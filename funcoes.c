@@ -103,13 +103,16 @@ int menorValor(int iteradores[], Vetor* vetores[], int qtdVetores) {
   int posMenor = 0;
 
   for (int i = 0; i < qtdVetores; i++) {
-    if (getTamanho(vetores[i]) > iteradores[i] &&
-      valor > getValorPos(vetores[i], iteradores[i])) {
+    // printf("tamanho v%d - %d --- iterador = %d\n", i, getTamanho(vetores[i]), iteradores[i]);
+    if ((getTamanho(vetores[i]) > iteradores[i] &&
+      valor > getValorPos(vetores[i], iteradores[i])) ||
+      getTamanho(vetores[posMenor]) <= iteradores[posMenor]) {
       valor = getValorPos(vetores[i], iteradores[i]);
       posMenor = i;
     }
   }
   iteradores[posMenor]++;
+  // printf("V%d - %d\n", posMenor, valor);
   return valor;
 }
 
